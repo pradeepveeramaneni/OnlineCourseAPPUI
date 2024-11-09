@@ -4,9 +4,10 @@
             <i class="fas fa-arrow-left"></i> Back to categories
         </a>
     </div>
+    
 
     <div class="page-header">
-        <h1>Explore Our Courses</h1>
+        <h1>Explore Our Courses </h1>
         <p>Discover a variety of courses tailored to boost your skills and knowledge.</p>
     </div>
 
@@ -39,7 +40,7 @@
                     <span class="rating">Rating: {{ course.userRating?.averageRating }} ({{
                         course.userRating?.totalRating }} reviews)</span>
                 </div>
-                <a class="btn btn-primary">View Details</a>
+                <a [routerLink]="['/course/detail',course.id]" routerLinkActive="router-link-active"  class="btn btn-primary">View Details</a>
             </div>
         </div>
     </div>

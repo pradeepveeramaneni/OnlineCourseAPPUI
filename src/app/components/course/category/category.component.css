@@ -150,7 +150,9 @@
     padding: 10px 0;
   }
   
-  
+  .carousel-container ::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers */
+  }
   
   .card {
     flex: 0 0 auto;

@@ -6,6 +6,7 @@ import { CategoryComponent } from './components/course/category/category.compone
 import { BrowseCourseComponent } from './components/course/browse-course/browse-course.component';
 import { CourseByCategoryComponent } from './components/course/course-by-category/course-by-category.component';
 import { PlansAndPricingComponent } from './components/plans-and-pricing/plans-and-pricing.component';
+import { CourseDetailsComponent } from './components/course/course-details/course-details.component';
 
 export const routes: Routes = [
 
@@ -16,5 +17,6 @@ export const routes: Routes = [
 { path: 'course/category', component: CategoryComponent },
 { path: 'course/browse', component: BrowseCourseComponent },
 { path: 'course/category/:categoryId', component: CourseByCategoryComponent },
-{path:'course/category/:categoryId',component:CourseByCategoryComponent},
+{ path: 'course/detail/:courseId', component: CourseDetailsComponent },
+
 ];
