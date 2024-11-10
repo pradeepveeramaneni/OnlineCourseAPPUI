@@ -5,7 +5,7 @@
 import { EnvironmentConfiguration } from "../app/models/environment-configuration";
 
 
-const serverUrl='https://smartlearnbykarthik-api.azurewebsites.net/api';
+const serverUrl='https://smartcodingbypradeep-api-a7cugzc0f3bgaxhb.canadacentral-01.azurewebsites.net/';
 
 
 // The list of file replacements can be found in `angular.json`.

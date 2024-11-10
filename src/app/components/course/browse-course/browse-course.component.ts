@@ -4,11 +4,12 @@ import { MOCK_COURSES } from '../../../mock-data/mock-course';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { courseService } from '../../../services/course.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-browse-course',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './browse-course.component.html',
   styleUrl: './browse-course.component.css'
 })

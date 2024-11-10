@@ -23,6 +23,11 @@
             "assets": [
               "src/assets",
               {
+                "glob": "web.config",
+                "input": "src",
+                "output":"/"
+              },
+              {
                 "glob": "**/*",
                 "input": "public"
               }
@@ -57,7 +62,7 @@
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
+                  "with": "src/environments/environment.prod.ts"
                 }
               ]
             }
