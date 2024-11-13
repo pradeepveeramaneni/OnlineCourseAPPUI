@@ -5,7 +5,7 @@
 import { EnvironmentConfiguration } from "../app/models/environment-configuration";
 
 
-const serverUrl='https://smartcodingbypradeep-api-a7cugzc0f3bgaxhb.canadacentral-01.azurewebsites.net/';
+const serverUrl='https://smartcodingbypradeep-api-a7cugzc0f3bgaxhb.canadacentral-01.azurewebsites.net/api';
 
 
 // The list of file replacements can be found in `angular.json`.
@@ -17,15 +17,15 @@ export const environment: EnvironmentConfiguration = {
     userProfile:'user-profiles'
   },
   adb2cConfig: {
-    chatHubUrl: 'https://smartlearnbykarthik-api.azurewebsites.net/chathub', // Correct URL
-    clientId: '41883d3b-2145-4abe-ab65-e2bee701d162',
-    readScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/prod/api/User.Read',
-    writeScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/prod/api/User.Write',
+    chatHubUrl: 'https://-api.azurewebsites.net/chathub', // Correct URL
+    clientId: '777d393c-afd1-4ea7-b517-1c45cfd0a6db',
+    readScopeUrl: 'https://smartcodingbypradeep.onmicrosoft.com/smartcodingbypradeep/prod/api/User.Read',
+    writeScopeUrl: 'https://smartcodingbypradeep.onmicrosoft.com/smartcodingbypradeep/prod/api/User.Write',
     scopeUrls:[
-      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/prod/api/User.Write',
-      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/prod/api/User.Write'
+      'https://smartcodingbypradeep.onmicrosoft.com/smartcodingbypradeep/prod/api/User.Write',
+      'https://smartcodingbypradeep.onmicrosoft.com/smartcodingbypradeep/prod/api/User.Write'
     ],
-    apiEndpointUrl: 'https://smartlearnbykarthik-api.azurewebsites.net/api'
+    apiEndpointUrl: 'https://smartcodingbypradeep-api-a7cugzc0f3bgaxhb.canadacentral-01.azurewebsites.net/'
   },
   cacheTimeInMinutes: 30,
 };

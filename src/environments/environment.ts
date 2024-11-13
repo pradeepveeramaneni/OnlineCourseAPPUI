@@ -5,27 +5,27 @@
 import { EnvironmentConfiguration } from "../app/models/environment-configuration";
 
 
-const serverUrl='https://localhost:7005/api';
+const serverUrl='http://localhost:5262/api';
 
 
 // The list of file replacements can be found in `angular.json`.
 export const environment: EnvironmentConfiguration = {
   env_name: 'dev',
-  production: true,
+  production: false,
   apiUrl: serverUrl,
   apiEndpoints: {
     userProfile:'user-profiles'
   },
   adb2cConfig: {
-    chatHubUrl: 'https://localhost:7005/chathub', // Correct URL
-    clientId: '5212f2c7-60a9-46ad-bcbb-3f5dc9af3dab',
-    readScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Read',
-    writeScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Write',
+    chatHubUrl: 'http://localhost:5262/chathub', // Correct URL
+    clientId: 'e3cd21c0-8225-4713-8909-9b8ba4124851',
+    readScopeUrl: 'https://smartcodingbypradeep.onmicrosoft.com/smartcodingbypradeep/dev/api/User.Read',
+    writeScopeUrl: 'https://smartcodingbypradeep.onmicrosoft.com/smartcodingbypradeep/dev/api/User.Write',
     scopeUrls:[
-      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Read',
-      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Write'
+      'https://smartcodingbypradeep.onmicrosoft.com/smartcodingbypradeep/dev/api/User.Read',
+      'https://smartcodingbypradeep.onmicrosoft.com/smartcodingbypradeep/dev/api/User.Write',
     ],
-    apiEndpointUrl: 'https://localhost:7005/api'
+    apiEndpointUrl: 'http://localhost:5262/api',
   },
   cacheTimeInMinutes: 30,
 };

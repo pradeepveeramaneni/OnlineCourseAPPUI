@@ -7,16 +7,16 @@ import { BrowseCourseComponent } from './components/course/browse-course/browse-
 import { CourseByCategoryComponent } from './components/course/course-by-category/course-by-category.component';
 import { PlansAndPricingComponent } from './components/plans-and-pricing/plans-and-pricing.component';
 import { CourseDetailsComponent } from './components/course/course-details/course-details.component';
+import { MsalGuard } from '@azure/msal-angular';
 
 export const routes: Routes = [
-
-{path:'',redirectTo:'home', pathMatch:'full'},
-{path:'home', component:HomeComponent},
-{path:'about-us', component:AboutUsComponent},
+{ path: '', redirectTo: 'home', pathMatch: 'full' },
+{ path: 'home', component: HomeComponent},
+{path:'about-us', component: AboutUsComponent},
 {path:'plans-and-price', component:PlansAndPricingComponent},
-{ path: 'course/category', component: CategoryComponent },
+{ path: 'course/category', component: CategoryComponent},
 { path: 'course/browse', component: BrowseCourseComponent },
-{ path: 'course/category/:categoryId', component: CourseByCategoryComponent },
-{ path: 'course/detail/:courseId', component: CourseDetailsComponent },
+{ path: 'course/category/:categoryId', component: CourseByCategoryComponent},
+{ path: 'course/detail/:courseId', component: CourseDetailsComponent},
 
 ];
