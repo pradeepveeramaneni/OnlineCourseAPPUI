@@ -7,7 +7,7 @@ import { Course, CourseDetails, InstructorModel } from '../models/course';
 @Injectable({
   providedIn: 'root',
 })
-export class CourseService {
+export class courseService {
   private baseUrl = `${environment.apiUrl}/Course`;
   private apiUrl = `${environment.apiUrl}`;
 
