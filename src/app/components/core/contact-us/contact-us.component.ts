@@ -1,45 +1,47 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatCurrency } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../../../services/login.service';
+import { UserProfileService } from '../../../services/user-profile.service';
+import { ContactService } from '../../../services/contact.service';
 
 @Component({
   selector: 'app-contact-us',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './contact-us.component.html',
-  styleUrl: './contact-us.component.css'
+  styleUrl: './contact-us.component.css',
 })
 export class ContactUsComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  contactForm!:FormGroup;
+  contactForm!: FormGroup;
   userId=0;
   constructor(
-  private fb: FormBuilder,
-  private contactService: ContactService,
-  private toastrService: ToastrService,
-  private loginService: LoginService,
-  private userService:UserProfileService
-  ){
-  this.contactForm=this.fb.group({
-    name:['', Validators.required],
-    email:['', Validators.required,Validators.email],
-    subject:['', Validators.required],
-    message: ['', Validators.required],
-  });
-}
-  
+    private fb: FormBuilder,
+    private contactService: ContactService,
+    private toastrService: ToastrService,
+    private loginService: LoginService,
+    private userService:UserProfileService
+  ) {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      subject: ['', Validators.required],
+      message: ['', Validators.required],
+    });
+  }
+
   ngOnInit(): void {
     this. triggerError();
     this.userId = this.loginService.userId;
   }
+
   triggerError() {
     // Simulate a non-HTTP error
     throw new Error('This is a simulated error');
   }
+
   onSubmit() {
     if (this.contactForm.valid) {
       this.contactService.sendMessage(this.contactForm.value).subscribe(

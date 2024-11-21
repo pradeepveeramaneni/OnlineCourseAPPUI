@@ -1,47 +1,87 @@
-import { Component, Input, input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Course } from '../../../models/course';
-import { MOCK_COURSES } from '../../../mock-data/mock-course';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { courseService } from '../../../services/course.service';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { trigger, transition, style, animate } from '@angular/animations';
+import { courseService } from '../../../services/course.service';
 
 @Component({
   selector: 'app-browse-course',
   standalone: true,
-  imports: [CommonModule, FormsModule,RouterModule],
+  imports: [RouterModule, FormsModule, CommonModule, PopoverModule],
   templateUrl: './browse-course.component.html',
-  styleUrl: './browse-course.component.css'
+  styleUrls: ['./browse-course.component.css'], // Fix typo: styleUrl to styleUrls
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [animate('300ms ease-out', style({ opacity: 0 }))]),
+    ]),
+    trigger('bounce', [
+      transition(':enter', [
+        style({ transform: 'scale(0.5)', opacity: 0 }), // Start smaller and transparent
+        animate(
+          '300ms cubic-bezier(0.6, -0.28, 0.735, 0.045)',
+          style({ transform: 'scale(1)', opacity: 1 })
+        ), // Bounce effect
+      ]),
+      transition(':leave', [
+        animate(
+          '200ms ease-out',
+          style({ transform: 'scale(0.5)', opacity: 0 })
+        ), // Shrink when leaving
+      ]),
+    ]),
+  ],
 })
 export class BrowseCourseComponent implements OnInit, OnChanges {
-@Input() categoryId:number=0;
- courses:Course[]=[];
- constructor(private _courseService:courseService){
- }
+  constructor(private courseService: courseService) {}
+  courses: Course[] = [];
+  @Input() categoryId: number = 0;
+  @Input() browseAllCourse: boolean = false;
 
- processCourses(){
-  this.getCourseByCategoryId(this.categoryId)
- }
-
- getCourseByCategoryId(categoryId:number){
- // this.courses=MOCK_COURSES.filter((x)=>x.categoryId==this.categoryId)
-  this._courseService.getCoursesByCategoryId(categoryId).subscribe(data=>{
-    this.courses=data;
-  })
- }
+  ngOnInit(): void {
+    this.processCourse();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-   this.processCourses();
-  }
-  ngOnInit(): void {
-    this.processCourses();
+    this.processCourse();
   }
 
- 
+  processCourse() {
+    if (this.browseAllCourse) {
+      this.getCourses();
+    } else {
+      this.getCourseByCategory(this.categoryId);
+    }
+  }
+  formatPrice(price: number): string {
+    return `$${price.toFixed(2)}`;
+  }
 
- formatPrice(price:number):string{
-  return `$${price.toFixed(2)}`;
- }
+  getCourseByCategory(categoryId: number) {
+    if (categoryId == 2 || categoryId == 7) {
+      categoryId = 345434534534534;
+    }
 
+    this.courseService.getCoursesByCategoryId(categoryId).subscribe((data) => {
+      this.courses = data;
+    });
+  }
 
+  getCourses() {
+    this.courseService.getAllCourses().subscribe((data) => {
+      this.courses = data;
+    });
+  }
 }
